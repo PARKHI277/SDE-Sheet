@@ -3,22 +3,58 @@ using namespace std;
 
 class Solution {
 public:
-    int singleNonDuplicate(vector<int>& nums) {
-        map<int,int>m;
-        for(int i =0;i<nums.size();i++)
-        {
-            m[nums[i]]++;
-        }
-        int result;
+
+int singleNonDuplicate(vector<int>& nums) {
+       int n = nums.size();
+        int low  = 0;
+        int high = n-2;
         
-        for(auto i : m)
+        while(low <= high)
         {
-            if(i.second == 1)
+            int mid = (low+high) >> 1;
+            
+            if(mid%2 == 0)
             {
-              result = i.first;
+                if(nums[mid] != nums[mid+1])
+                {
+                    high = mid-1;
+                }
+                else
+                {
+                    low  =  mid+1;
+                }
+            }
+            else
+            {
+                if(nums[mid] == nums[mid+1])
+                {
+                    high = mid-1;
+                }
+                else
+                {
+                    low = mid+1;
+                }
             }
         }
         
-        return result;
+        return nums[low];
     }
+    // int singleNonDuplicate(vector<int>& nums) {
+    //     map<int,int>m;
+    //     for(int i =0;i<nums.size();i++)
+    //     {
+    //         m[nums[i]]++;
+    //     }
+    //     int result;
+        
+    //     for(auto i : m)
+    //     {
+    //         if(i.second == 1)
+    //         {
+    //           result = i.first;
+    //         }
+    //     }
+        
+    //     return result;
+    // }
 };
