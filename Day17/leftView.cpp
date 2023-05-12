@@ -136,9 +136,10 @@ void find(Node *root,int level,vector<int>&res)
     if(res.size() == level)
     {
         res.push_back(root->val);
-        find(root->right,level+1,res);
-        find(root->left,level+1,res);
+       
     }
+     find(root->right,level+1,res);
+        find(root->left,level+1,res);
 }
 //Function to return a list containing elements of left view of the binary tree.
 vector<int> leftView(Node *root)
