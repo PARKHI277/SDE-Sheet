@@ -2,6 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// to find n rows
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
